@@ -12,6 +12,8 @@ const { title, description, pubDate, updatedDate, author, cover, coverAlt, tags 
 const fmtDate = (d: Date) =>
   d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const canonical = new URL(`/blog/${post.id}`, Astro.site).href;
 const ogImage = cover
   ? cover.startsWith('http')
@@ -48,8 +50,8 @@ const jsonLd = {
   <article class="section">
     <div class="container post">
       <nav class="post__breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> <span aria-hidden="true">/</span>
-        <a href="/blog">Blog</a> <span aria-hidden="true">/</span>
+        <a href={`${base}/`}>Home</a> <span aria-hidden="true">/</span>
+        <a href={`${base}/blog`}>Blog</a> <span aria-hidden="true">/</span>
         <span>{title}</span>
       </nav>
 
@@ -73,7 +75,7 @@ const jsonLd = {
       <div class="post__cta">
         <p>Have a health concern you'd like to discuss with our specialists?</p>
         <div class="hero__actions">
-          <a href="/appointment" class="btn btn-primary">Book an Appointment</a>
+          <a href={`${base}/appointment`} class="btn btn-primary">Book an Appointment</a>
           <a href="https://wa.me/919966351994?text=Hello%20Surecare%20Clinic" target="_blank" rel="noopener" class="btn btn-outline">Chat on WhatsApp</a>
         </div>
       </div>
