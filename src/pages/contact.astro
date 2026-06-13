@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import body from '../partials/contact.html?raw';
+import raw from '../partials/contact.html?raw';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const body = raw
+  .replace(/src="\/images\//g, `src="${base}/images/`)
+  .replace(/href="\/([^"]*?)"/g, `href="${base}/$1"`);
 ---
 <BaseLayout
   title="Contact Us | Surecare Clinic Yelahanka, Bengaluru"
