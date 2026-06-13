@@ -2,14 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import body from '../partials/index.html?raw';
 
-// MedicalClinic structured data — drives Google's local/medical rich results.
-// `url` resolves from the `site` value in astro.config.mjs.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalClinic',
   name: 'Surecare Clinic, Yelahanka',
   description:
-    'Multispeciality clinic with in-house pharmacy and diagnostic lab in Yelahanka, Bengaluru. Complete care under one roof — consultations, pharmacy with home delivery and diagnostics with home sample collection.',
+    'Multispeciality clinic in Yelahanka, Bengaluru — expert uro-oncologist Dr. Ashwin Giridhar. Treatment for kidney cancer, bladder cancer, prostate cancer, kidney stones, UTI, andrology and more. In-house pharmacy and Apollo diagnostics lab with home sample collection.',
   url: Astro.site?.href,
   telephone: '+91-99889-96188',
   priceRange: '₹₹',
@@ -38,21 +36,31 @@ const jsonLd = {
     },
   ],
   medicalSpecialty: [
-    'Urology', 'Neurology', 'Nephrology', 'PrimaryCare', 'Pediatric',
-    'Gynecologic', 'Dermatology', 'Orthopedic', 'Cardiovascular',
-    'Diabetic', 'Pulmonary', 'Otolaryngologic',
+    'Urology', 'Uro-Oncology', 'Neurology', 'Nephrology', 'Oncology',
+    'Transplantation', 'GeneralSurgery',
   ],
   availableService: [
+    { '@type': 'MedicalProcedure', name: 'Kidney Cancer Treatment (Uro-Oncology)' },
+    { '@type': 'MedicalProcedure', name: 'Bladder Cancer Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Prostate Cancer Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Penile Cancer Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Adrenal Cancer / Tumour' },
+    { '@type': 'MedicalProcedure', name: 'Urothelial Cancer Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Testicular Cancer Treatment' },
+    { '@type': 'MedicalProcedure', name: 'RPLND (Retroperitoneal Lymph Node Dissection)' },
+    { '@type': 'MedicalProcedure', name: 'IVC Thrombectomy' },
     { '@type': 'MedicalProcedure', name: 'Kidney Stone Treatment (Laser / Endoscopic)' },
-    { '@type': 'MedicalProcedure', name: 'Renal Transplantation' },
-    { '@type': 'MedicalProcedure', name: 'Uro-Oncology' },
+    { '@type': 'MedicalProcedure', name: 'Bladder Stone Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Kidney Transplant Surgery' },
+    { '@type': 'MedicalProcedure', name: 'UTI Treatment' },
+    { '@type': 'MedicalProcedure', name: 'Andrology' },
     { '@type': 'MedicalTest', name: 'Blood & Urine Diagnostics with Home Sample Collection' },
   ],
 };
 ---
 <BaseLayout
-  title="Surecare Clinic Yelahanka — Multispeciality Clinic & Lab"
-  description="Complete care under one roof in Yelahanka, Bengaluru — expert consultations, an in-house pharmacy with home delivery and on-site lab diagnostics."
+  title="Best Urologist & Uro-Oncologist in Yelahanka, Bengaluru | Surecare Clinic"
+  description="Surecare Clinic, Yelahanka — Dr. Ashwin Giridhar, APJ Abdul Kalam awardee Uro-Oncologist. Expert treatment for kidney cancer, bladder cancer, prostate cancer, kidney stones & UTI. In-house pharmacy & Apollo diagnostics. Open 7 days."
   image="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1200&q=80"
   jsonLd={jsonLd}
 >
