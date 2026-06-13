@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ site }) => {
   const pages: Array<[string, string, string]> = [
     ['Home', '/', 'Multispeciality clinic, in-house pharmacy and diagnostic lab in Yelahanka, Bengaluru — complete care under one roof.'],
     ['About', '/about', 'About Surecare Clinic, Yelahanka and our approach to complete family healthcare.'],
-    ['Services', '/services', 'Urology, Neurology, Nephrology and 9 more departments, pharmacy with home delivery, and lab diagnostics with home sample collection. Includes an FAQ.'],
+    ['Services', '/services', 'Urology, Neurology, Nephrology and 9 more departments, in-house pharmacy, and lab diagnostics with home sample collection. Includes an FAQ.'],
     ['Blog', '/blog', 'Health tips, condition guides and clinic updates.'],
     ['Book an Appointment', '/appointment', 'Book a consultation; confirmed on WhatsApp.'],
     ['Contact', '/contact', 'Address, phone, WhatsApp, email and opening hours.'],
@@ -28,7 +28,7 @@ export const GET: APIRoute = async ({ site }) => {
   lines.push('# Surecare Clinic, Yelahanka');
   lines.push('');
   lines.push(
-    '> Multispeciality clinic in Yelahanka New Town, Bengaluru offering specialist consultations (Urology, Neurology, Nephrology and more), an in-house pharmacy with home delivery, and on-site lab diagnostics with home sample collection. Open 7 days a week. Phone: +91 99889 96188.'
+    '> Multispeciality clinic in Yelahanka New Town, Bengaluru offering specialist consultations (Urology, Neurology, Nephrology and more), an in-house pharmacy, and on-site lab diagnostics with home sample collection. Open Mon-Sat 7:00 AM – 9:00 PM, Sunday 7:00 AM – 1:00 PM. Phone: +91 99889 96188.'
   );
   lines.push('');
   lines.push('## Pages');
