@@ -24,18 +24,24 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, Astro.site).href;
 
-// Normalise current path for active-link comparison ("/about/" -> "/about").
-const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+// Base path prefix (e.g. '/surecare' for GitHub Pages, '' for production domain).
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const r = (p: string) => base + p; // root-relative URL with base prefix
+
+// Strip base so active-link comparisons work regardless of base setting.
+const rawPath = Astro.url.pathname.replace(base, '').replace(/\/+$/, '') || '/';
 
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  { href: r('/'), label: 'Home' },
+  { href: r('/about'), label: 'About' },
+  { href: r('/services'), label: 'Services' },
+  { href: r('/blog'), label: 'Blog' },
+  { href: r('/contact'), label: 'Contact' },
 ];
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+const isActive = (href: string) => {
+  const rawHref = href.replace(base, '').replace(/\/+$/, '') || '/';
+  return rawHref === '/' ? rawPath === '/' : rawPath === rawHref || rawPath.startsWith(rawHref + '/');
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -95,8 +101,8 @@ const isActive = (href: string) =>
 <!-- ============ NAVBAR (sticky) ============ -->
 <header class="navbar" data-navbar>
   <nav class="container navbar__inner" aria-label="Primary">
-    <a href="/" class="brand brand--logo" aria-label="Surecare Clinic — We care for you">
-      <img class="brand__mark-img" src="/images/logo-mark.png" alt="" width="64" height="64" />
+    <a href={r('/')} class="brand brand--logo" aria-label="Surecare Clinic — We care for you">
+      <img class="brand__mark-img" src={r('/images/logo-mark.png')} alt="" width="64" height="64" />
       <span class="brand__words">
         <span class="brand__name">SURECARE CLINIC</span>
         <span class="brand__tag">We care for you</span>
@@ -113,11 +119,11 @@ const isActive = (href: string) =>
           >{item.label}</a>
         </li>
       ))}
-      <li class="nav-menu__cta"><a class="btn btn-primary" href="/appointment">Book Appointment</a></li>
+      <li class="nav-menu__cta"><a class="btn btn-primary" href={r('/appointment')}>Book Appointment</a></li>
     </ul>
 
     <div class="nav-actions">
-      <a href="/appointment" class="btn btn-primary btn-sm">Book Appointment</a>
+      <a href={r('/appointment')} class="btn btn-primary btn-sm">Book Appointment</a>
       <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-menu">
         <span></span><span></span><span></span>
       </button>
@@ -135,7 +141,7 @@ const isActive = (href: string) =>
 
       <!-- Col 1: About -->
       <div class="footer__col">
-        <a href="/" class="footer__brand">
+        <a href={r('/')} class="footer__brand">
           <span class="brand__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"/></svg>
           </span>
@@ -155,12 +161,12 @@ const isActive = (href: string) =>
       <div class="footer__col">
         <h3 class="footer__title">Quick Links</h3>
         <ul class="footer__links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/appointment">Book Appointment</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href={r('/')}>Home</a></li>
+          <li><a href={r('/about')}>About Us</a></li>
+          <li><a href={r('/services')}>Services</a></li>
+          <li><a href={r('/blog')}>Blog</a></li>
+          <li><a href={r('/appointment')}>Book Appointment</a></li>
+          <li><a href={r('/contact')}>Contact</a></li>
         </ul>
       </div>
 
@@ -168,12 +174,12 @@ const isActive = (href: string) =>
       <div class="footer__col">
         <h3 class="footer__title">Services</h3>
         <ul class="footer__links">
-          <li><a href="/services">Urology</a></li>
-          <li><a href="/services">Neurology</a></li>
-          <li><a href="/services">Nephrology</a></li>
-          <li><a href="/services">In-House Pharmacy</a></li>
-          <li><a href="/services">Diagnostics &amp; Lab</a></li>
-          <li><a href="/services">General Medicine</a></li>
+          <li><a href={r('/services')}>Urology</a></li>
+          <li><a href={r('/services')}>Neurology</a></li>
+          <li><a href={r('/services')}>Nephrology</a></li>
+          <li><a href={r('/services')}>In-House Pharmacy</a></li>
+          <li><a href={r('/services')}>Diagnostics &amp; Lab</a></li>
+          <li><a href={r('/services')}>General Medicine</a></li>
         </ul>
       </div>
 
@@ -201,8 +207,8 @@ const isActive = (href: string) =>
     <div class="footer__bottom">
       <p>&copy; <span data-year>2026</span> Surecare Clinic, Yelahanka. All rights reserved.</p>
       <div class="footer__bottom-links">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms &amp; Conditions</a>
+        <a href={r('/privacy')}>Privacy Policy</a>
+        <a href={r('/terms')}>Terms &amp; Conditions</a>
       </div>
     </div>
   </div>
