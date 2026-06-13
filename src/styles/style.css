@@ -1029,6 +1029,15 @@ select.form-control {
 .footer__brand { display: inline-flex; align-items: center; gap: 0.65rem; margin-bottom: 1.1rem; }
 .footer__brand .brand__name { color: var(--clr-white); }
 .footer__brand .brand__sub { color: var(--clr-mint); }
+.footer__logo-img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+  flex: none;
+}
 .footer__about { font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.25rem; }
 .footer__socials { display: flex; gap: 0.75rem; }
 .footer__socials a {
