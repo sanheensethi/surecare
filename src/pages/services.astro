@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import body from '../partials/services.html?raw';
+
+// FAQPage structured data — mirrors the visible FAQ accordion. AI search
+// engines (Google AI Overviews, ChatGPT, Perplexity) favour clean Q&A pairs,
+// and this is eligible for FAQ rich results. Keep answers in sync with the page.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need an appointment to visit?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Walk-ins are welcome for general consultations during our opening hours. For specialist consultations — especially Urology with Dr. Ashwin Giridhar, and visiting Neurology & Nephrology consultants — we strongly recommend booking ahead so we can reserve your slot. You can book online via our appointment page, call +91 99889 96188, or message us on WhatsApp.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is pharmacy home delivery free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We offer home delivery of medicines across Yelahanka. Charges, if any, depend on your location and order size — for most nearby addresses, delivery is free. Send your prescription on WhatsApp and our pharmacy team will confirm availability and delivery details right away.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How fast are lab reports ready?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most routine tests — such as CBC, Lipid Profile, LFT, KFT, Thyroid and HbA1c — are typically ready the same day or by the next day. Cultures and certain specialised tests take longer as they require incubation. We always give you an expected report time when you book or drop off your sample.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which specialists visit, and when?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dr. Ashwin Giridhar, our Consultant Urologist, Transplant Surgeon & Uro-Oncologist, is available at Surecare Clinic from 6 PM–8 PM, Monday to Friday. Neurology and Nephrology consultations are provided by visiting specialists on an appointment-on-request basis — contact us and we will arrange a suitable date and time.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What payment methods do you accept?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We accept cash, credit and debit cards, and UPI / online payments — for consultations, pharmacy purchases and lab tests alike.',
+      },
+    },
+  ],
+};
+---
+<BaseLayout
+  title="Our Services | Consultations, Pharmacy & Lab Tests — Surecare Clinic Yelahanka"
+  description="Surecare Clinic, Yelahanka offers specialist consultations in Urology, Neurology & Nephrology plus 9 more departments, a full-service in-house pharmacy with home delivery, and on-site diagnostics with home sample collection."
+  image="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=80"
+  jsonLd={faqJsonLd}
+>
+  <Fragment set:html={body} />
+</BaseLayout>

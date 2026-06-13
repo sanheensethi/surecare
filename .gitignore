@@ -1,0 +1,11 @@
+# build output
+dist/
+# astro generated types
+.astro/
+# dependencies
+node_modules/
+# legacy raw HTML (kept locally as reference; not deployed)
+legacy/
+# os / editor
+.DS_Store
+*.log

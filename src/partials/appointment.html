@@ -1,0 +1,213 @@
+</div>
+
+<!-- ============ INNER PAGE HEADER BANNER ============ -->
+<section class="page-banner">
+  <div class="container page-banner__inner">
+    <h1 class="page-banner__title fade-up">Book an Appointment</h1>
+    <nav class="breadcrumb fade-up delay-1" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumb__sep" aria-hidden="true">&rsaquo;</span>
+      <span aria-current="page">Book an Appointment</span>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ APPOINTMENT SECTION ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Schedule a Visit</span>
+      <h2 class="section-title">Request Your Appointment</h2>
+      <p class="section-subtitle">Fill in your details below and confirm instantly on WhatsApp. For urgent help, call us directly &mdash; we're here Mon&ndash;Sat 9 AM&ndash;9 PM and Sunday 10 AM&ndash;7 PM.</p>
+    </div>
+
+    <div class="appointment-layout">
+
+      <!-- LEFT: Form -->
+      <div class="form-card fade-up">
+        <div class="form-status" id="formStatus" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span id="formStatusText">Opening WhatsApp to confirm your booking&hellip;</span>
+        </div>
+
+        <form class="form" id="appointmentForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full Name <span class="req">*</span></label>
+              <input class="form-control" type="text" id="fullName" name="fullName" autocomplete="name" placeholder="e.g. Ramesh Kumar" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number <span class="req">*</span></label>
+              <input class="form-control" type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" maxlength="10" required />
+              <span class="form-hint">Enter a 10-digit Indian mobile number (we'll confirm on WhatsApp).</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="department">Department / Service <span class="req">*</span></label>
+            <select class="form-control" id="department" name="department" required>
+              <option value="" disabled selected>Select a department or service</option>
+              <option value="Urology — Dr. Ashwin Giridhar">Urology &mdash; Dr. Ashwin Giridhar</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Nephrology">Nephrology</option>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Gynecology">Gynecology</option>
+              <option value="Dermatology">Dermatology</option>
+              <option value="Orthopedics">Orthopedics</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Diabetology">Diabetology</option>
+              <option value="Pulmonology">Pulmonology</option>
+              <option value="ENT">ENT</option>
+              <option value="Lab Test / Diagnostics">Lab Test / Diagnostics</option>
+              <option value="Pharmacy">Pharmacy</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="date">Preferred Date</label>
+              <input class="form-control" type="date" id="date" name="date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="time">Preferred Time</label>
+              <select class="form-control" id="time" name="time">
+                <option value="" disabled selected>Select a time slot</option>
+                <option value="Morning (9:00 AM – 12:00 PM)">Morning (9:00 AM &ndash; 12:00 PM)</option>
+                <option value="Afternoon (12:00 PM – 4:00 PM)">Afternoon (12:00 PM &ndash; 4:00 PM)</option>
+                <option value="Evening (4:00 PM – 9:00 PM)">Evening (4:00 PM &ndash; 9:00 PM)</option>
+                <option value="Dr. Ashwin slot (6:00 PM – 8:00 PM)">Dr. Ashwin slot (6:00 PM &ndash; 8:00 PM, Mon&ndash;Fri)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message <span style="color:var(--clr-text-muted);font-weight:500;">(optional)</span></label>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Briefly describe your concern, symptoms or any preference (optional)."></textarea>
+          </div>
+
+          <button class="btn btn-primary btn-lg btn-block" type="submit">
+            Book on WhatsApp
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.013c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 0 0 1.523 5.276l-.999 3.648 3.965-1.04zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </button>
+          <p class="appt-note">We never share your details. Submitting opens WhatsApp so our team can confirm your slot directly.</p>
+        </form>
+      </div>
+
+      <!-- RIGHT: Info sidebar -->
+      <aside class="appt-sidebar fade-up delay-1">
+
+        <!-- Clinic hours -->
+        <div class="appt-card">
+          <h3 class="appt-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Clinic Hours
+          </h3>
+          <ul class="hours-list">
+            <li><span class="hours-list__day">Monday &ndash; Saturday</span><span class="hours-list__time">9:00 AM &ndash; 9:00 PM</span></li>
+            <li><span class="hours-list__day">Sunday</span><span class="hours-list__time">10:00 AM &ndash; 7:00 PM</span></li>
+          </ul>
+        </div>
+
+        <!-- Dr. Ashwin OPD highlight -->
+        <div class="appt-card appt-card--highlight">
+          <h3 class="appt-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Dr. Ashwin Giridhar &mdash; OPD
+          </h3>
+          <p><strong>Consultant Urologist &amp; Uro-Oncologist</strong></p>
+          <p>Available at Surecare Clinic <strong>6:00 PM &ndash; 8:00 PM</strong>, Monday to Friday.</p>
+          <p>Pick the <strong>"Dr. Ashwin slot (6&ndash;8 PM)"</strong> time when booking a urology consultation.</p>
+        </div>
+
+        <!-- Call buttons -->
+        <div class="appt-card">
+          <h3 class="appt-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Prefer to Call?
+          </h3>
+          <p class="appt-note" style="margin-top:0;margin-bottom:1rem;">Speak to our front desk and we'll book you in right away.</p>
+          <div class="appt-card__actions">
+            <a class="btn btn-primary btn-block" href="tel:+919988996188">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call +91 99889 96188
+            </a>
+            <a class="btn btn-outline btn-block" href="https://wa.me/919988996188?text=Hello%20Surecare%20Clinic%2C%20I%27d%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.013c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 0 0 1.523 5.276l-.999 3.648 3.965-1.04zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp +91 99889 96188
+            </a>
+          </div>
+        </div>
+
+        <!-- Home collection / delivery reminder -->
+        <div class="appt-card">
+          <h3 class="appt-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Care at Your Doorstep
+          </h3>
+          <ul class="reminder-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Home sample collection</strong> for blood &amp; urine tests &mdash; CBC, Lipid, LFT, KFT, Thyroid, HbA1c &amp; more.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span><strong>Pharmacy home delivery</strong> of medicines &amp; healthcare products across Yelahanka.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Just mention it in your message or on WhatsApp and we'll arrange a slot.</span>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS STRIP ============ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Simple &amp; Quick</span>
+      <h2 class="section-title">How Booking Works</h2>
+      <p class="section-subtitle">Three easy steps from request to consultation &mdash; no app, no account needed.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step__num" aria-hidden="true">1</div>
+        <h3 class="step__title">Fill the Form</h3>
+        <p class="step__text">Share your name, number, department and preferred date &amp; time. It takes under a minute.</p>
+      </div>
+      <div class="step fade-up delay-1">
+        <div class="step__num" aria-hidden="true">2</div>
+        <h3 class="step__title">Confirm on WhatsApp</h3>
+        <p class="step__text">Your details open in WhatsApp pre-filled. Send the message and our team confirms your slot.</p>
+      </div>
+      <div class="step fade-up delay-2">
+        <div class="step__num" aria-hidden="true">3</div>
+        <h3 class="step__title">Visit the Clinic</h3>
+        <p class="step__text">Arrive at Surecare Clinic, Yelahanka at your confirmed time &mdash; or opt for home collection / delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-strip fade-up">
+      <h2>Need help choosing the right department?</h2>
+      <p>Our team is happy to guide you to the right specialist or service. Reach out and we'll take care of the rest.</p>
+      <div class="cta-strip__actions">
+        <a class="btn btn-white btn-lg" href="tel:+919988996188">Call +91 99889 96188</a>
+        <a class="btn btn-white btn-lg" href="https://wa.me/919988996188?text=Hello%20Surecare%20Clinic" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER (4-column) ============ -->

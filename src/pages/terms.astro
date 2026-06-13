@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Terms & Conditions | Surecare Clinic, Yelahanka"
+  description="The terms governing your use of the Surecare Clinic, Yelahanka website and services, including our medical disclaimer, appointment terms and limitations of liability."
+>
+  <section class="section">
+    <div class="container legal">
+      <span class="eyebrow">Legal</span>
+      <h1 class="section-title section-title--left">Terms &amp; Conditions</h1>
+      <p class="legal__updated">Last updated: 13 June 2026</p>
+
+      <div class="legal__body">
+        <p>These Terms &amp; Conditions ("Terms") govern your use of the website and services of <strong>Surecare Clinic, Yelahanka</strong> ("Surecare Clinic", "we", "us", "our"). By using this website, booking an appointment, or using our services, you agree to these Terms.</p>
+
+        <div class="legal__callout">
+          <h2>Medical disclaimer (please read)</h2>
+          <p>The information on this website is provided for <strong>general informational purposes only and is not medical advice</strong>. It is not a substitute for professional diagnosis, examination or treatment by a qualified doctor. Reading this website or contacting us does <strong>not create a doctor–patient relationship</strong>; that relationship begins only upon an in-person consultation.</p>
+          <p><strong>In a medical emergency, do not rely on this website — call your local emergency services or go to the nearest hospital immediately.</strong></p>
+        </div>
+
+        <h2>1. Appointments</h2>
+        <p>Booking through our website or WhatsApp submits a <strong>request</strong> for an appointment, which is subject to confirmation by our team based on availability. Specialist and visiting-consultant slots are confirmed on request. Please inform us in advance if you need to reschedule or cancel.</p>
+
+        <h2>2. Consultations, pharmacy &amp; diagnostics</h2>
+        <ul>
+          <li>Consultations are provided by qualified practitioners; treatment decisions are made on a case-by-case basis.</li>
+          <li>Medicines from our in-house pharmacy are dispensed in accordance with applicable law and, where required, against a valid prescription.</li>
+          <li>Diagnostic tests and home sample collection are subject to availability and to the procedures of our diagnostic partner. Reported turnaround times are estimates.</li>
+        </ul>
+
+        <h2>3. Your responsibilities</h2>
+        <p>You agree to provide accurate information and to use our website and services only for lawful purposes. You are responsible for the accuracy of the contact and health information you share with us.</p>
+
+        <h2>4. Intellectual property</h2>
+        <p>All content on this website — including text, logos, graphics and design — is the property of Surecare Clinic or its licensors and may not be reproduced without permission.</p>
+
+        <h2>5. Third-party links &amp; services</h2>
+        <p>Our website uses third-party services such as WhatsApp (for messaging) and our diagnostic partner (for laboratory services). We are not responsible for the content or practices of these third parties, which are governed by their own terms and policies.</p>
+
+        <h2>6. Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, Surecare Clinic shall not be liable for any indirect or consequential loss arising from the use of this website or reliance on its general information. Nothing in these Terms limits liability that cannot be excluded under applicable law.</p>
+
+        <h2>7. Governing law</h2>
+        <p>These Terms are governed by the laws of India, and any disputes shall be subject to the jurisdiction of the courts at Bengaluru, Karnataka.</p>
+
+        <h2>8. Changes to these Terms</h2>
+        <p>We may revise these Terms from time to time. Continued use of the website after changes constitutes acceptance of the updated Terms.</p>
+
+        <h2>9. Contact us</h2>
+        <p><strong>Surecare Clinic, Yelahanka</strong><br />
+        1216, 8th B Cross Rd, Opposite Indira Canteen, Yelahanka New Town, Bengaluru, Karnataka 560064<br />
+        Phone / WhatsApp: <a href="tel:+919988996188">+91 99889 96188</a></p>
+
+        <p class="legal__note">These Terms are provided for general information and should be reviewed by a qualified legal professional before publication to ensure they meet your specific requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal { max-width: 840px; }
+    .legal__updated { color: var(--clr-text-muted); font-size: 0.9rem; margin: 0 0 2rem; }
+    .legal__body { color: var(--clr-text); line-height: 1.75; }
+    .legal__body h2 {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      margin: 2rem 0 0.75rem;
+      color: var(--clr-text);
+    }
+    .legal__body p { margin: 0 0 1.1rem; }
+    .legal__body ul { margin: 0 0 1.1rem 1.25rem; padding-left: 0.75rem; list-style: disc; }
+    .legal__body li { margin-bottom: 0.5rem; }
+    .legal__body a { color: var(--clr-primary); text-decoration: underline; }
+    .legal__callout {
+      background: var(--clr-mint-soft);
+      border: 1px solid var(--clr-border-green);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .legal__callout h2 { margin-top: 0; color: var(--clr-primary-dark); }
+    .legal__note {
+      margin-top: 2rem; padding: 1rem 1.25rem;
+      background: var(--clr-mint-soft);
+      border-left: 4px solid var(--clr-primary);
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem; color: var(--clr-text-muted);
+    }
+  </style>
+</BaseLayout>

@@ -1,0 +1,28 @@
+# Surecare Clinic, Yelahanka — robots.txt
+# Allow all standard search engines.
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI search/answer crawlers so the clinic can appear in
+# AI assistants and AI search results. Remove an entry here to opt that bot out.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+# Machine-readable site map and AI index
+Sitemap: https://surecareclinic.com/sitemap-index.xml

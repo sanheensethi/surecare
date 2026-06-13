@@ -1,0 +1,220 @@
+---
+import '../styles/style.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Absolute or root-relative OG/Twitter image. Defaults to the clinic hero. */
+  image?: string;
+  /** og:type — "website" for pages, "article" for blog posts. */
+  type?: string;
+  /** Optional JSON-LD structured data object (or array of objects). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1200&q=80',
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+// Canonical URL for this page (uses `site` from astro.config.mjs).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = image.startsWith('http') ? image : new URL(image, Astro.site).href;
+
+// Normalise current path for active-link comparison ("/about/" -> "/about").
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content="Surecare Clinic, Yelahanka" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicon: inline green cross SVG -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230e7a4e'/%3E%3Cpath d='M10 5h4v5h5v4h-5v5h-4v-5H5v-4h5z' fill='white'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Plus Jakarta Sans (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <slot name="head" />
+</head>
+<body>
+
+<!-- ============ UTILITY BAR (desktop only) ============ -->
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <ul class="utility-bar__list">
+      <li class="utility-bar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+919988996188">+91 99889 96188</a>
+      </li>
+      <li class="utility-bar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Mon&ndash;Sat 7:00&nbsp;AM&ndash;9:00&nbsp;PM &middot; Sun 7:00&nbsp;AM&ndash;1:00&nbsp;PM</span>
+      </li>
+    </ul>
+    <div class="utility-bar__socials">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAVBAR (sticky) ============ -->
+<header class="navbar" data-navbar>
+  <nav class="container navbar__inner" aria-label="Primary">
+    <a href="/" class="brand brand--logo" aria-label="Surecare Clinic — We care for you">
+      <img class="brand__mark-img" src="/images/logo-mark.png" alt="" width="64" height="64" />
+      <span class="brand__words">
+        <span class="brand__name">SURECARE CLINIC</span>
+        <span class="brand__tag">We care for you</span>
+      </span>
+    </a>
+
+    <ul class="nav-menu" data-nav-menu id="primary-menu">
+      {navItems.map((item) => (
+        <li>
+          <a
+            class:list={['nav-menu__link', { 'is-active': isActive(item.href) }]}
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >{item.label}</a>
+        </li>
+      ))}
+      <li class="nav-menu__cta"><a class="btn btn-primary" href="/appointment">Book Appointment</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="/appointment" class="btn btn-primary btn-sm">Book Appointment</a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="nav-backdrop" data-nav-backdrop></div>
+
+<slot />
+
+<!-- ============ FOOTER (4-column) ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Col 1: About -->
+      <div class="footer__col">
+        <a href="/" class="footer__brand">
+          <span class="brand__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"/></svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name">Surecare Clinic</span>
+            <span class="brand__sub">Yelahanka</span>
+          </span>
+        </a>
+        <p class="footer__about">Complete Care Under One Roof &mdash; expert consultations, a full-service in-house pharmacy and on-site diagnostics with home sample collection for lab tests.</p>
+        <div class="footer__socials">
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/919988996188" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.013c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 0 0 1.523 5.276l-.999 3.648 3.965-1.04zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="footer__col">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/appointment">Book Appointment</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="footer__col">
+        <h3 class="footer__title">Services</h3>
+        <ul class="footer__links">
+          <li><a href="/services">Urology</a></li>
+          <li><a href="/services">Neurology</a></li>
+          <li><a href="/services">Nephrology</a></li>
+          <li><a href="/services">In-House Pharmacy</a></li>
+          <li><a href="/services">Diagnostics &amp; Lab</a></li>
+          <li><a href="/services">General Medicine</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact + Hours -->
+      <div class="footer__col">
+        <h3 class="footer__title">Get In Touch</h3>
+        <div class="footer__contact">
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>1216, 8th B Cross Rd, Opposite Indira Canteen, Yelahanka Satellite Town, Yelahanka New Town, Bengaluru, Karnataka 560064</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span><a href="tel:+919988996188">+91 99889 96188</a> &middot; <a href="https://wa.me/919988996188">WhatsApp</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Mon&ndash;Sat: 7:00 AM &ndash; 9:00 PM<br />Sunday: 7:00 AM &ndash; 1:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span data-year>2026</span> Surecare Clinic, Yelahanka. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<a class="whatsapp-float" href="https://wa.me/919988996188?text=Hello%20Surecare%20Clinic" target="_blank" rel="noopener" aria-label="Chat with Surecare Clinic on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zM6.6 20.013c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 0 0 1.523 5.276l-.999 3.648 3.965-1.04zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<slot name="end" />
+
+<script>import '../scripts/main.js';</script>
+</body>
+</html>
