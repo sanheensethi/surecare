@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import body from '../partials/about.html?raw';
+import raw from '../partials/about.html?raw';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const body = raw.replace(/src="\/images\//g, `src="${base}/images/`);
 ---
 <BaseLayout
   title="About | Dr. Ashwin Giridhar — Uro-Oncologist in Yelahanka | Surecare Clinic"

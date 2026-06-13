@@ -220,16 +220,5 @@ const isActive = (href: string) => {
 <slot name="end" />
 
 <script>import '../scripts/main.js';</script>
-<script>
-  // Fix image paths in raw HTML partials when deployed under a sub-path (e.g. /surecare/).
-  // Astro doesn't process src attributes inside set:html strings, so we patch at runtime.
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-  if (base) {
-    document.querySelectorAll('img[src^="/images/"]').forEach((el) => {
-      const img = el as HTMLImageElement;
-      img.src = base + img.getAttribute('src');
-    });
-  }
-</script>
 </body>
 </html>
